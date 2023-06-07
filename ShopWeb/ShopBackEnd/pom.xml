@@ -18,7 +18,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>9.0.30</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>

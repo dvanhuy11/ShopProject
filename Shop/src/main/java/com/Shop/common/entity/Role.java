@@ -12,20 +12,20 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "roles")
 public class Role {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(length=50, nullable=false, unique = true )
 	private String name;
-	
+
 	@Column(length=150, nullable=false)
 	private String description;
 
 	public Role() {
 	}
-	
+
 	public Role(int id) {
 		this.id = id;
 	}
@@ -88,7 +88,7 @@ public class Role {
 	public String toString() {
 		return this.name;
 	}
-	
-	
+
+
 
 }
