@@ -7,9 +7,9 @@ import jakarta.persistence.MappedSuperclass;
 @MappedSuperclass
 public class AbstractAddressWithCountry extends AbstractAddress{
 
-    @jakarta.persistence.ManyToOne
-    @JoinColumn(name = "country_id")
-    protected Country country;
+//    @jakarta.persistence.ManyToOne
+//    @JoinColumn(name = "country_id")
+//    protected Country country;
 
     @Override
     public String toString() {
@@ -26,7 +26,7 @@ public class AbstractAddressWithCountry extends AbstractAddress{
 
         if (state != null && !state.isEmpty()) address += ", " + state;
 
-        address += ", " + country.getName();
+//        address += ", " + country.getName();
 
         if (!postalCode.isEmpty()) address += ". Postal Code: " + postalCode;
         if (!phoneNumber.isEmpty()) address += ". Phone Number: " + phoneNumber;

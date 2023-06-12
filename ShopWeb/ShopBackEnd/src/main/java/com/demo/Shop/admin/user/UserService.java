@@ -76,4 +76,11 @@ boolean isUpdatingUser = (user.getId() != null);
 			throw new UserNotFoundException("Could not find any user with ID" +id);
 		}
 	}
+	public void delete(Integer id) throws UserNotFoundException {
+		Long countById = userRepos.countById(id);
+		if(countById == null || countById==0) {
+			throw new UserNotFoundException("Could not find any user with ID" +id);
+		}
+		userRepos.deleteById(id);
+	}
 }
