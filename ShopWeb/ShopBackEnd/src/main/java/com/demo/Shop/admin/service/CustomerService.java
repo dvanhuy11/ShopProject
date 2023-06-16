@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 
 import com.demo.Shop.admin.error.CustomerNotFoundException;
 import com.demo.Shop.admin.paging.PagingAndSortingHelper;
-import com.demo.Shop.admin.repository.CountryRepository;
 import com.demo.Shop.admin.repository.CustomerRepository;
 import com.demo.Shop.admin.service.ICustomerService;
 
@@ -29,19 +28,20 @@ import com.demo.Shop.admin.service.ICustomerService;
 public class CustomerService implements ICustomerService{
 
     public static final int CUSTOMERS_PER_PAGE = 10;
-
+    @Autowired
     private CustomerRepository customerRepo;
-    private CountryRepository countryRepo;
-    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public CustomerService(CustomerRepository customerRepo, CountryRepository countryRepo,
-                           PasswordEncoder passwordEncoder) {
-        super();
-        this.customerRepo = customerRepo;
-        this.countryRepo = countryRepo;
-        this.passwordEncoder = passwordEncoder;
-    }
+    private PasswordEncoder passwordEncoder;
+
+//    @Autowired
+//    public CustomerService(CustomerRepository customerRepo, CountryRepository countryRepo,
+//                           PasswordEncoder passwordEncoder) {
+//        super();
+//        this.customerRepo = customerRepo;
+//        this.countryRepo = countryRepo;
+//        this.passwordEncoder = passwordEncoder;
+//    }
 
     @Override
     public void listByPage(int pageNum, PagingAndSortingHelper helper) {
@@ -54,11 +54,11 @@ public class CustomerService implements ICustomerService{
         customerRepo.updateEnabledStatus(id, enabled);
     }
 
-    @Override
-    public List<Country> listAllCountries() {
-        // TODO Auto-generated method stub
-        return countryRepo.findAllByOrderByNameAsc();
-    }
+//    @Override
+//    public List<Country> listAllCountries() {
+//        // TODO Auto-generated method stub
+//        return countryRepo.findAllByOrderByNameAsc();
+//    }
 
     @Override
     public boolean isEmailUnique(Integer id, String email) {
