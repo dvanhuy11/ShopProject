@@ -19,12 +19,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
+import com.demo.Shop.admin.error.CustomerNotFoundException;
 import com.demo.Shop.admin.paging.PagingAndSortingParam;
 import com.demo.Shop.admin.service.CustomerService;
 
 //import javax.servlet.http.HttpServletResponse;
-//import com.demo.Shop.admin.error.CustomerNotFoundException;
+
 //import com.demo.Shop.admin.exportcsv.CustomerCsvExporter;
 //import com.demo.Shop.admin.exportexcel.CustomerExcelExporter;
 //import com.demo.Shop.admin.exportpdf.CustomerPdfExporter;
@@ -106,13 +106,13 @@ public class CustomerController {
 
         try {
             Customer customer = service.get(id);
-            List<Country> countries = service.listAllCountries();
+//            List<Country> countries = service.listAllCountries();
 
-            model.addAttribute("listCountries", countries);
+//            model.addAttribute("listCountries", countries);
             model.addAttribute("customer", customer);
             model.addAttribute("pageTitle", String.format("Edit Customer (ID: %d)", id));
 
-            LOGGER.info("CustomerController | editCustomer | listCountries : " + countries);
+//            LOGGER.info("CustomerController | editCustomer | listCountries : " + countries);
             LOGGER.info("CustomerController | editCustomer | customer : " + customer);
             LOGGER.info("CustomerController | editCustomer | pageTitle : " + (String.format("Edit Customer (ID: %d)", id)));
 
@@ -160,57 +160,57 @@ public class CustomerController {
         return defaultRedirectURL;
     }
 
-    @GetMapping("/customers/export/csv")
-    public void exportToCSV(HttpServletRequest response) throws IOException {
-
-        LOGGER.info("CustomerController | exportToCSV is called");
-
-        List<Customer> listCustomers = service.listAll();
-
-        LOGGER.info("CustomerController | exportToCSV | listCustomers.size() : " + listCustomers.size());
-
-        CustomerCsvExporter exporter = new CustomerCsvExporter();
-
-        LOGGER.info("CustomerController | exportToCSV | export is starting");
-
-        exporter.export(listCustomers, response);
-
-        LOGGER.info("CustomerController | exportToCSV | export completed");
-    }
-
-    @GetMapping("/customers/export/excel")
-    public void exportToExcel(HttpServletResponse response) throws IOException {
-
-        LOGGER.info("CustomerController | exportToExcel is called");
-
-        List<Customer> listCustomers = service.listAll();
-
-        LOGGER.info("CustomerController | exportToExcel | listCustomers.size() : " + listCustomers.size());
-
-        CustomerExcelExporter exporter = new CustomerExcelExporter();
-
-        LOGGER.info("CustomerController | exportToExcel | export is starting");
-
-        exporter.export(listCustomers, response);
-
-        LOGGER.info("CustomerController | exportToExcel | export completed");
-    }
-
-    @GetMapping("/customers/export/pdf")
-    public void exportToPDF(HttpServletResponse response) throws IOException {
-
-        LOGGER.info("CustomerController | exportToPDF is called");
-
-        List<Customer> listCustomers = service.listAll();
-
-        LOGGER.info("UserController | exportToPDF | listCustomers.size() : " + listCustomers.size());
-
-        CustomerPdfExporter exporter = new CustomerPdfExporter();
-
-        LOGGER.info("UserController | exportToPDF | export is starting");
-
-        exporter.export(listCustomers, response);
-
-        LOGGER.info("CustomerController | exportToPDF | export completed");
-    }
+//    @GetMapping("/customers/export/csv")
+//    public void exportToCSV(HttpServletRequest response) throws IOException {
+//
+//        LOGGER.info("CustomerController | exportToCSV is called");
+//
+//        List<Customer> listCustomers = service.listAll();
+//
+//        LOGGER.info("CustomerController | exportToCSV | listCustomers.size() : " + listCustomers.size());
+//
+//        CustomerCsvExporter exporter = new CustomerCsvExporter();
+//
+//        LOGGER.info("CustomerController | exportToCSV | export is starting");
+//
+//        exporter.export(listCustomers, response);
+//
+//        LOGGER.info("CustomerController | exportToCSV | export completed");
+//    }
+//
+//    @GetMapping("/customers/export/excel")
+//    public void exportToExcel(HttpServletResponse response) throws IOException {
+//
+//        LOGGER.info("CustomerController | exportToExcel is called");
+//
+//        List<Customer> listCustomers = service.listAll();
+//
+//        LOGGER.info("CustomerController | exportToExcel | listCustomers.size() : " + listCustomers.size());
+//
+//        CustomerExcelExporter exporter = new CustomerExcelExporter();
+//
+//        LOGGER.info("CustomerController | exportToExcel | export is starting");
+//
+//        exporter.export(listCustomers, response);
+//
+//        LOGGER.info("CustomerController | exportToExcel | export completed");
+//    }
+//
+//    @GetMapping("/customers/export/pdf")
+//    public void exportToPDF(HttpServletResponse response) throws IOException {
+//
+//        LOGGER.info("CustomerController | exportToPDF is called");
+//
+//        List<Customer> listCustomers = service.listAll();
+//
+//        LOGGER.info("UserController | exportToPDF | listCustomers.size() : " + listCustomers.size());
+//
+//        CustomerPdfExporter exporter = new CustomerPdfExporter();
+//
+//        LOGGER.info("UserController | exportToPDF | export is starting");
+//
+//        exporter.export(listCustomers, response);
+//
+//        LOGGER.info("CustomerController | exportToPDF | export completed");
+//    }
 }

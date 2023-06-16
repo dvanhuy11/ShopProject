@@ -1,5 +1,5 @@
 package com.demo.Shop.admin.repository;
-
+import com.Shop.common.entity.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.demo.Shop.admin.paging.SearchRepository;
-import com.demo.Shop.admin.entity.Customer;
+
 
 public interface CustomerRepository extends SearchRepository<Customer, Integer> {
 
